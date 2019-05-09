@@ -1,6 +1,14 @@
-name := "Company"
+enablePlugins(JavaAppPackaging)
+enablePlugins(DockerPlugin)
+enablePlugins(AshScriptPlugin)
 
-version := "0.0.1-SNAPSHOT"
+name := "Company"
+packageName in Docker := "careercolony/akka-http-docker-company-api"
+dockerBaseImage := "openjdk:jre"
+
+name := "User"
+
+version := "0.0.1"
 
 scalaVersion := "2.11.8"
 

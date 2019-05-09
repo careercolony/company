@@ -21,6 +21,7 @@ object UpdateDao {
       updateData <- Future {
         Update(userRequest.memberID,
           BSONObjectID.generate().stringify,
+          userRequest.coyID,
           userRequest.title,
           userRequest.description,
           userRequest.post_type,

@@ -13,6 +13,7 @@ import com.mj.users.model.JsonRepo._
 import com.mj.users.model.{responseMessage, _}
 import org.slf4j.LoggerFactory
 import spray.json._
+import com.mj.users.config.Application._
 
 import scala.util.{Failure, Success}
 

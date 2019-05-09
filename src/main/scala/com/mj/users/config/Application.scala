@@ -14,6 +14,7 @@ object Application {
   val akkaPort: Int = configServer.getString("akkaPort").toInt
   val seedNodes: String = configServer.getString("seedNodes")
   val poolSize: Int = config.getInt("poolSize")
+  val version = config.getString("companyVersion")
 
   val configMongo: Config = config.getConfig("mongodb")
   val configMongoDbname: String = configMongo.getString("dbname")

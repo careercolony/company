@@ -108,7 +108,7 @@ object CompanyDao {
 
     val result = for {
       response <- update(companyCollection, BSONDocument("coyID" -> coyID),
-        BSONDocument("$pull" -> BSONDocument("connections"->BSONDocument("address"->address))))
+        BSONDocument("$pull" -> BSONDocument("location"->BSONDocument("address"->address))))
     }
       yield (response)
 

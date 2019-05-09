@@ -24,8 +24,8 @@ case class Company(memberID: String, coyID: String, company_name: String, compan
 case class JobRequest(memberID:String, coyID:String, company_name: String, company_url: String, about_us:String, company_size:Int, logo: String, title:String, job_description:String, job_function: String, industry: String, job_location:String, cover_image: String, employment_type: String, level: Option[String], views: Option[List[String]])
 case class Job(memberID:String, coyID:String, jobID: String, company_name: String, company_url: String, about_us:String, company_size:Int, logo: String, title:String, job_description:String, job_function: String, industry: String, job_location:String, cover_image: String, employment_type: String, level: Option[String], views: Option[List[String]])
 
-case class UpdateRequest(memberID:String, title: String, description: String, post_type:String, thumbnail_url:String, update_url:String, author:String, update_date: Option[String])
-case class Update(memberID:String, updateID: String, title: String, description: String, post_type:String, thumbnail_url:String, update_url:String, author:String, update_date: Option[String])
+case class UpdateRequest(memberID:String, coyID:String, title: String, description: String, post_type:String, thumbnail_url:String, update_url:String, author:String, update_date: Option[String])
+case class Update(memberID:String, coyID:String, updateID: String, title: String, description: String, post_type:String, thumbnail_url:String, update_url:String, author:String, update_date: Option[String])
 
 
 case class EventRequest(memberID:String, coyID:String, title: String, description: String, post_type:String, thumbnail_url:String, event_url:String, author:String, event_start_date: Option[String], event_end_date: Option[String], created_date:String)
@@ -47,8 +47,8 @@ object JsonRepo extends DefaultJsonProtocol with SprayJsonSupport {
   implicit val JobRequestDtoFormats: RootJsonFormat[JobRequest] = jsonFormat16(JobRequest)
   implicit val JobResponseDtoFormats: RootJsonFormat[Job] = jsonFormat17(Job)
 
-  implicit val UpdateRequestequestDtoFormats: RootJsonFormat[UpdateRequest] = jsonFormat8(UpdateRequest)
-  implicit val UpdateResponseDtoFormats: RootJsonFormat[Update] = jsonFormat9(Update)
+  implicit val UpdateRequestequestDtoFormats: RootJsonFormat[UpdateRequest] = jsonFormat9(UpdateRequest)
+  implicit val UpdateResponseDtoFormats: RootJsonFormat[Update] = jsonFormat10(Update)
   implicit val EventRequestequestDtoFormats: RootJsonFormat[EventRequest] = jsonFormat11(EventRequest)
   implicit val EventResponseDtoFormats: RootJsonFormat[Event] = jsonFormat12(Event)
 

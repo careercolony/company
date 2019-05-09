@@ -10,6 +10,7 @@ import com.mj.users.route.event._
 import com.mj.users.route.job._
 import com.mj.users.route.update._
 import org.joda.time.DateTime
+import com.mj.users.config.Application._
 
 import scala.concurrent.{ExecutionContext, Future}
 
@@ -74,7 +75,7 @@ object RouteUtils extends NewCompanyRoute with UpdateCompanyRoute with GetCompan
   def routeRoot(implicit ec: ExecutionContext,
                 system: ActorSystem,
                 materializer: ActorMaterializer) = {
-    routeLogic ~
+    pathPrefix("company" / version) { routeLogic } ~
       extractRequest { request =>
         badRequest(request)
       }
