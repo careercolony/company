@@ -4,7 +4,7 @@ enablePlugins(AshScriptPlugin)
 
 name := "Company"
 packageName in Docker := "careercolony/akka-http-docker-company-api"
-dockerBaseImage := "openjdk:jre"
+dockerBaseImage := "openjdk:jre-alpine"
 
 name := "User"
 
