@@ -2,17 +2,20 @@ enablePlugins(JavaAppPackaging)
 enablePlugins(DockerPlugin)
 enablePlugins(AshScriptPlugin)
 
-name := "Company"
+
 packageName in Docker := "careercolony/akka-http-docker-company-api"
 dockerBaseImage := "openjdk:jre-alpine"
 
-name := "User"
+name := "Company"
 
 version := "0.0.1"
 
 scalaVersion := "2.11.8"
 
 scalacOptions := Seq("-unchecked", "-deprecation", "-encoding", "utf8")
+
+
+
 
 libraryDependencies ++= {
   val akkaV = "2.5.16"
