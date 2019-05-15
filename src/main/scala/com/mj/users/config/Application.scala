@@ -31,6 +31,9 @@ object Application {
   val kongAdminURL = config.getString("kong.admin.url")
   val kongExpirationTime = config.getInt("kong.expiration.time")
 
+  val active: String = config.getString("status.active")
+  val deleted: String = config.getString("status.deleted")
+
   //Mongo configuration
   val dbName = configMongoDbname
   val database_profile = configProfileDbName
@@ -39,5 +42,9 @@ object Application {
   val parsedUri = MongoConnection.parseURI(mongoUri)
   val connection = parsedUri.map(driver.connection)
   val futureConnection = Future.fromTry(connection)
+
+
+  val topic: String = config.getString("kafka.topic")
+  val brokers: String = config.getString("kafka.brokers")
 
 }

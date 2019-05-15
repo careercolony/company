@@ -6,7 +6,7 @@ import akka.actor.Actor
 import akka.util.Timeout
 import com.mj.users.config.MessageConfig
 import com.mj.users.model.{Update, responseMessage}
-import com.mj.users.mongo.UpdateDao.{getOneUpdateDetails, updateUpdateDetails}
+import com.mj.users.mongo.UpdateDao.{updateUpdateDetails, updateUpdateFeed}
 
 import scala.concurrent.ExecutionContext.Implicits.global
 
@@ -14,7 +14,27 @@ class UpdateProcessor extends Actor with MessageConfig {
 
   implicit val timeout = Timeout(500, TimeUnit.SECONDS)
 
+  def receive = {
 
+    case (updateDto: Update) => {
+      val origin = sender()
+      val result = updateUpdateDetails(updateDto).map(updateResponse => {
+        updateUpdateFeed(updateDto, "Update").map(resp =>
+          origin ! responseMessage(updateDto.updateID, "", updateSuccess))
+      }
+      )
+
+      result.recover {
+        case e: Throwable => {
+          origin ! responseMessage(updateDto.updateID, e.getMessage, "")
+        }
+      }
+    }
+  }
+
+
+  
+  /**
   def receive = {
 
     case (updatenRequestDto: Update) => {
@@ -37,4 +57,5 @@ class UpdateProcessor extends Actor with MessageConfig {
     }
 
   }
+  */
 }
